@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>SQL umetanje</title>
+</head>
+
+<body>
+   <h1>SQL umetanje</h1>
+
+   <p>Jednostavna demonstracija napada SQL umetanjem.<br>
+      Ranjivost se može iskoristiti unosom npr. <i>' OR '1'='1</i>, <br>
+      tada query postaje <i>SELECT * FROM users WHERE lastName = '' OR '1'='1';</i><br>
+   </p>
+   <label for="vulnerable">Ranjivost omogućena?</label>
+   <input type="checkbox" id="vulnerable" name="vulnerable" checked /><br><br>
+   <form id="sql-injection-form" method="post">
+      <label for="lastname">Pretraga korisnika po prezimenu:</label><br>
+      <input type="text" name="lastname" id="lastname"><br><br>
+      <input type="submit" value="Pretraži">
+   </form>
+
+   <div id="results"></div>
+
+   <script>
+      const form = document.getElementById("sql-injection-form");
+      const results = document.getElementById("results");
+      const vulnerable_checkbox = document.getElementById("vulnerable");
+
+      form.addEventListener("submit", async (e) => {
+         e.preventDefault();
+         const last_name = document.getElementById("lastname").value;
+         const vulnerable =  vulnerable_checkbox.checked.toString();
+         const url = `/users?lastname=${encodeURIComponent(last_name)}&vulnerable=${encodeURIComponent(vulnerable)}`;
+
+         try {
+            const res = await fetch(url, {
+               method: "GET",
+               credentials: "same-origin"
+            });
+            if (res.status === 200) {
+               document.getElementById("results").innerHTML = await res.text();
+            } else {
+               alert(await res.text());
+            }
+         } catch (err) {
+            console.error(err);
+            alert("au brt");
+         }
+      });
+   </script>
+
+</body>
+
+</html>
