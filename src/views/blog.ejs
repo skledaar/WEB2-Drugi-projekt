@@ -8,8 +8,11 @@
 
 <body>
    <h1>CSRF blog</h1>
+<<<<<<< HEAD
    <p><i>Ulogirajte se (Vi ste žrtva) i kliknite na link koji će vam napraviti CSRF napad i objaviti nešto u Vaše ime.</i></p>
 
+=======
+>>>>>>> 0ac174e293545985ca5814810cbe2ba217d48262
    <% if (user) { %>
       <p>Prijavljen korisnik: <%= user.email %> (<a href="/logout">Odjava</a>)</p>
       <section id="new-post">
@@ -20,8 +23,15 @@
          </form>
       </section>
    <% } else { %>
+<<<<<<< HEAD
       <p><a href="/login">Prijavite se</a> kako bi mogli objavljivati.</p>
    <% } %>   
+=======
+      <p><a href="/login">Prijavite se</a> kako bi mogli objavljivati</p>
+   <% } %>
+
+   
+>>>>>>> 0ac174e293545985ca5814810cbe2ba217d48262
 
    <section id="posts">
       <% posts.reverse().forEach(post => { %>
