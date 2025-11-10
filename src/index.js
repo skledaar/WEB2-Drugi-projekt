@@ -35,6 +35,10 @@ app.use("/blog", blogRouter);
 
 app.get("/users", getBySurname);
 
+app.get("/materimackripto", (req, res) => {
+   res.render("materimackripto");
+});
+
 //app.use("/users", userRouter);
 
 const PORT = process.env.PORT || 3000;
