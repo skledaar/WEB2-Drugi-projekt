@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+   <meta charset="UTF-8">
+   <title>CSRF blog</title>
+</head>
+
+<body>
+   <h1>CSRF blog</h1>
+   <% if (user) { %>
+      <p>Prijavljen korisnik: <%= user.email %> (<a href="/logout">Odjava</a>)</p>
+      <section id="new-post">
+         <form action="/blog" method="POST">
+            <label for="post_text">Nova objava</label><br>
+            <textarea name="post_text" rows="2" cols="50" required></textarea><br>
+            <button type="submit">Objavi</button>
+         </form>
+      </section>
+   <% } else { %>
+      <p><a href="/login">Prijavite se</a> kako bi mogli objavljivati</p>
+   <% } %>
+
+   
+
+   <section id="posts">
+      <% posts.reverse().forEach(post => { %>
+         <article class="post">
+            <h2><%= post.email %></h2>
+            <p><%= post.post_text %></p>
+         </article>
+      <% }) %>
+   </section>
+
+</body>
+
+</html>

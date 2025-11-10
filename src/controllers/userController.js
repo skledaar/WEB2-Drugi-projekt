@@ -20,6 +20,6 @@ export const getBySurname = async (req, res) => {
       }
    } catch (err) {
       console.error(err);
-      res.status(500).send("Server error getprezime");
+      res.status(500).send("Server error getBySurname");
    }
 };
