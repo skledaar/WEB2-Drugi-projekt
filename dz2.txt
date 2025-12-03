@@ -1,0 +1,7 @@
+https://github.com/skledaar/WEB2-Drugi-projekt
+https://web2-drugi-projekt.onrender.com/
+SQL umetanje, Lažiranje zahtjeva na drugom sjedištu
+sve je uspješno implementirano, ali zbog hostinga nije pravi 100% CSRF
+SQL umetanjem moguće je dobiti podatke svih "korisnika" u bazi (mi smo napadači), dok je CSRF-om moguće objavljivati u ime korisnika koji su logirani (mi smo žrtve) i nasjednu na kripto prevaru lažnog Mate Rimca
+CSRF je lokalno radio samo kad sam u odvojenom CMD-u hostao i attacker stranicu. Probao sam s pythonom i nodeom, radilo je na oba načina, dok samim otvaranjem html datoteke nije radilo, nije se slao cookie. Zbog toga sam probao hostati dvije odvojene stranice na renderu, ali nikako nije radilo pa sam stavio da napad ide s druge stranice u istoj domeni.
+SQL umetanje dostupno je u rootu web aplikacije, na dnu je link za CSRF. Tamo se pravimo da je Mate objavio link koji se može stisnuti i ako odemo na njega, ta stranica šalje POST zahtjev koji objavljuje spam poruku (zahtjev prolazi jer blog stranica već ima naš cookie i vjeruje da smo to mi). Podaci za testiranje, iako je dostupan google login: tester@fer.hr LozankoHorvat123

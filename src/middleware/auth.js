@@ -9,4 +9,10 @@ export const authConfig = auth({
    baseURL: process.env.AUTH0_CALLBACK_URL,
    clientID: process.env.AUTH0_CLIENT_ID,
    issuerBaseURL: process.env.AUTH0_DOMAIN,
+   session: {
+      cookie: {
+         sameSite: "none",
+         secure: true
+      }
+   }
 });
