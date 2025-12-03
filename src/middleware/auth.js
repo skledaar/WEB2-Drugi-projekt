@@ -11,7 +11,7 @@ export const authConfig = auth({
    issuerBaseURL: process.env.AUTH0_DOMAIN,
    session: {
       cookie: {
-         sameSite: "none",
+         sameSite: "None",
          secure: true
       }
    }
